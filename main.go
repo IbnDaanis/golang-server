@@ -24,6 +24,10 @@ func main() {
 
 	r := mux.NewRouter()
 
+	r.HandleFunc("/", func(_ http.ResponseWriter, _ *http.Request) {
+		fmt.Println("Hello")
+	})
+
 	r.HandleFunc("/books/{title}/page/{page}", func(w http.ResponseWriter, r *http.Request) {
 		vars := mux.Vars(r)
 		title := vars["title"]
